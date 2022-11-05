@@ -1,5 +1,5 @@
 # Network Algorithms
-[Playlist of Jim Kurose course]([https://](https://youtube.com/playlist?list=PLOsilMR_Br3aXSpaWNSMSLU7YIIUFqHKj))
+[Playlist of Jim Kurose course](https://youtube.com/playlist?list=PLOsilMR_Br3aXSpaWNSMSLU7YIIUFqHKj)
 
 # Lection 1
 ## 1.1 Introduction - What is the Internet?
