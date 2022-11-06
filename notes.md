@@ -512,3 +512,78 @@ Attackers make resources (server, bandwidth) unavailable to legitimate traffic b
 ### Overview of Network security
 - What can bad actors do?
 - What defenses designed, deployed?
+
+## 1.7. History
+Need to visit: Musée des Arts et Métiers (Paris)
+
+### 1961-1972: Early packet-switching principles
+- 1961: Kleinrock - queueing theory shows effectiveness of packet-switching
+- 1964: Baran - packet -switching in military nets
+- 1967: ARPAnet conceived by Advanced Research Projects Agency
+- 1969: first ARPAnet node operational
+- 1972:
+  - ARPAnet public demo
+  - NCP (Network Control Protocol) first host-host protocol
+  - first e-mail program
+  - ARPAnet has 15 nodes
+
+### 1972-1980: Internetworking, new and proprietary networks
+- 1970: ALOHAnet satellite network in Hawaii
+- 1974: Cerf and Kahn - architecture for interconnecting networks
+- 1976: Ethernet at Xerox PARC
+- late70's: proprietary architectures: DECnet, SNA, XNA
+- 1970: ARPAnet has 200 nodes
+
+#### Cerf and Kahn's internetworking principles:
+- minimalism, autonomy - no internal changes required to interconnect networks
+- bets-effort service model
+- stateless routing
+- decentralized control
+
+define today's Internet architecture
+
+### 1980-1990: new protocols, a proliferation of networks
+- 1983: deployment of TCP/IP
+- 1982: smtp e-mail protocol defined
+- 1983: DNS defined for name-to-IP address translation
+- 1985: ftp protocol defined
+- 1988: TCP congestion control
+
+--
+
+- new national networks: CSnet, BITnet, NSFnet, Minitel
+- 100,000 hosts connected to confederation of networks
+
+### 1990, 2000s: commercialization, the Web, new applications
+- early 1990s: ARPAnet decommissioned
+- 1991: NSF lifts restrictions on commercial use of NSFnet (decommissioned, 1995)
+- early 1990s: Web
+  - hypertext [Bush 1945, Nelson 1960's]
+  - HTML, HTTP: Berners-Lee
+  - 1994: Mosaic, later Netscape
+  - late 1990s: commercialization of the Web
+- late 1990s - 2000s:
+  - more killer apps: instant messaging, P2P file sharing
+  - network security to forefront
+  - est. 50 million host, 100 million+ users
+  - backbone links running at Gbps
+
+### 2005 - present: scale, SDN, mobility, cloud
+- aggressive deployment of broadband home access (10-100's Mbps)
+- 2008: software-defined networking (SDN)
+- increasing ubiquity of high-speed wireless access: 4G/5G, WiFi
+- service providers (Google, FB, Microsoft) create their own networks
+  - bypass commercial Internet to connect "close" to end user, providing "instantaneous" access to social media, search, video content, ...
+- enterprises run their services in "cloud" (e.g., Amazon Web Services, Microsoft Azure)
+- rise of smartphones: more mobile than fixed devices on Internet (2017)
+
+## Summary
+- Internet overview
+- what's a protocol?
+- network edge, access network, core
+  - packet-switching versus circuit-switching
+  - Internet structure
+- performance: loss, delay, throughput
+- layering, service, encapsulation
+- networks under attack
+- history
