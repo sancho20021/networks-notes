@@ -1,7 +1,7 @@
 # Network Algorithms
 [Playlist of Jim Kurose course](https://youtube.com/playlist?list=PLOsilMR_Br3aXSpaWNSMSLU7YIIUFqHKj)
 
-# Lection 1
+# Lecture 1
 ## 1.1 Introduction - What is the Internet?
 ### The Internet: a "nuts and bolts" view
 
@@ -195,3 +195,108 @@ packet transmission delay = time needed to transmit packet into link = *L / R*
 - Satellite
   - up to 45 Mbps per channel
   - 270 msec end-end delay
+
+## 1.3 Network core: packet/circuit switching, internet structure
+
+### The network core
+- mesh of routers connected with links
+- **packet-switching**: hosts break application-layer messages into packets
+  - network *forwards* packets from one router to the next, across links on path from *source to destination*
+
+### Two key network-core functions
+![](imgs/1/3/1.png)
+
+#### Forwarding
+- aka "switching"
+- **local** action: move arriving packets from router's input link to appropriate router output link
+
+#### Routing
+- **global** action: determine source-destination paths taken by packets
+- routing algorithms
+
+### Packet-switching: store-and-forward
+![](imgs/1/3/2.png)
+
+Entire packet must arrive at router before it can be transmitted on next link.
+
+### Packet-switching: queueing
+![](imgs/1/3/3.png)
+
+If arrival rate (in bps) to links exceeds transmission rate (bps) of link for some period of time:
+- packets will queue, waiting to be transmitted on output link
+- packets can be dropped (lost) if memory (buffer) in router fills up
+
+### Alternative to packet switching: circuit switching
+end-end resources allocated to, reserved for "call" between source and destination.
+![](imgs/1/3/4.png)
+
+Link capacity is reserved exclusively for the call:
+- no queueing
+- no delay except for the propagation delay
+- no loss of data
+
+Cons:
+- circuit segment idle if not used by call (no sharing)
+
+#### Circuit switching: FDM and TDM
+![](imgs/1/3/5.png)
+
+##### Frequency Division Multiplexing
+- frequencies divided into frequency bands
+- each call allocated its own band, can transmit at max rate of that band
+
+##### Time Division Multiplexing (TDM)
+- time divided into slots
+- each call allocated periodic slot(s), can transmit at maximum rate of frequency band only during its time slot(s)
+
+### Packet switching vs circuit switching
+![](imgs/1/3/6.png)
+
+Example:
+- 1 Gb/s link
+- each user:
+  - 100 Mb/s when "active"
+  - active 10% of time
+
+Q: how many users can use this network under circuit-switching and packet switching?
+
+- circuit-switching: 10 users
+- packet switching: with 35 users, probability of > 10 active at same time is less than 0.004
+
+#### Is packet switching a winner?
+- great for "bursty" data - sometimes has data to send, but at other times not
+  - resource sharing
+  - simpler, no call setup
+- **excessive congestion possible**: packet delay and loss due to buffer overflow
+  - protocols needed for reliable data transfer, congestion control
+- **Q: How to provide circuit-like behavior with packet-switching?**
+  - It's complicated. There are various techniques that try to make packet switching as "circuit-like" as possible.
+
+### Internet structure: a *network of networks*
+![](imgs/1/3/7.png)
+
+- On the edge of the internet there are *access networks*.
+- They are interconnected via global ISP (global backbone networks)
+  - There are multiples of them because they are competitors
+- Global ISP are connected using peering links
+  - Locations where they are connected are called IXP: Internet exchange points
+- Lots of access nets are connected to **regional ISP** first.
+- There also exist **Content provider network**
+  - Google, Microsoft, etc, run their own global networks to bring their content close to the end users.
+
+![](imgs/1/3/8.png)
+
+At *center*: small number of well-connected large networks
+- tier-1 commercial ISPs (e.g., Level 3, Sprint, AT&T, NTT), national & international coverage
+- content provider networks (e.g., Google, Facebook): private network that connects its data centers to Internet, often bypassing tier-1, regional ISPs
+
+### Overview of the Network core:
+- forwarding, routing
+- packet switching
+  - store-and-forward
+  - queueing delays
+  - packet loss
+- circuit switching
+  - vs packet switching
+- structure of today's internet
+  - network of networks
