@@ -398,3 +398,70 @@ link on end-end path that constrains end-end throughput
   - 4 components of delay
   - traceroute
 - throughput
+
+## 1.5. Layering, encapsulation, service models
+### Analogy
+Organization of air travel.
+
+![](imgs/1/5/1.png)
+
+**layers**: each layer implements  service
+  - via its own internal-layer actions
+  - relying on services provided by layer below
+
+### Why layering?
+Approach to designing/discussing complex systems:
+- explicit structure allows identification, relationship of system's pieces
+  - layered **reference model** for discussion
+- modularization eases maintenance, updating of system
+  - change in layer's service implementation: transparent to rest of system
+  - e.g., change in gate procedure doesn't affect rest of system
+
+### Layered Internet protocol stack
+|             |
+|-------------|
+| application |
+| transport   |
+| network     |
+| link        |
+| physical    |
+
+- **application**: supporting network applications
+  - HTTP, IMAP, SMTP, DNS
+- **transport**: process-process data transfer
+  - TCP, UDP
+- **network**: routing of datagrams from source to destination
+  - IP, routing protocols
+- **link**: data transfer between neighboring network elements
+  - Ethernet, 802.11 (WiFi), PPP
+- **physical**: bits *on the wire*
+
+#### Application
+**Application** exchanges **messages** M to implement some application service using *services* of transport layer
+
+#### Transport
+**Transport-layer** protocol transfers M (e.g., reliably) from one *process* to another, using services of network layer.
+- transport-layer protocol **encapsulates** application-layer message, M, with *transport* layer-layer header H_t to create a transport-layer **segment**
+  - H_t used by transport layer protocol to implement its service
+
+#### Network
+**Network-layer** protocol transfers transport-layer segment (H_t M) from one *host* to another, using link layer services.
+- network-layer protocol **encapsulates** transport-ayer segment (H_t M) with network layer-layer header H_n to create a network-layer **datagram**
+  - H_n used by network layer protocol to implement its service
+
+#### Link
+**Link-layer** protocol transfers datagram (H_n (H_t M)) from *host* to neighboring *host*.
+- link-layer protocol ... with link-layer header H_l to create a link-layer **frame**.
+
+![](imgs/1/5/2.png)
+
+### Encapsulation: an end-end view
+![](imgs/1/5/3.png)
+
+### Overview
+- architectural layering
+- Internet layers
+- encapsulation
+  - taking information from higher layer
+  - wrapping a header around it to implement the service
+  - passing it down to a lower layer
