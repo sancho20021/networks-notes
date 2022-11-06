@@ -300,3 +300,101 @@ At *center*: small number of well-connected large networks
   - vs packet switching
 - structure of today's internet
   - network of networks
+
+## 1.4. Performance
+### How do packet delay and loss occur?
+![](imgs/1/4/1.png)
+
+- packets **queue** in route buffers, waiting for turn for transmission
+  - queue length grows when arrival rate to link (temporarily) exceeds output link capacity
+- packet **loss** occurs when memory to hold queued packets fills up
+
+### Packet delay: four sources
+![](imgs/1/4/2.png)
+
+#### nodal processing
+- check bit errors
+- determine output link
+- typically < microsecs
+
+#### queueing delay
+- time waiting at output link for transmission
+- depends on congestion level of router
+
+#### transmission delay
+The amount of time for the packet to be pushed into the outgoing link
+- *L*: packet length (bits)
+- *R*: link transmission rate (bps)
+- *d_trans = L / R*
+
+#### propagation delay
+- *d*: length of physical link
+- *s*: propagation speed (~2 x 10^8 m / sec)
+- *d_prop = d / s*
+
+Real world analogy:
+- time for a car to go through a toll booth = transmission delay
+- time for a car to travel between two toll booths = propagation delay
+
+### Packet queueing delay (revisited)
+- *a*: average packet arrival rate
+- *L*: packet length (bits)
+- *R*: link bandwidth (bit transmission rate)
+
+*L * a / R = arrival rate of bits / service rate of bits = **traffic intensity***
+
+- *La/R ~ 0*: avg. queueing delay small
+- *La/R -> 1*: avg. queueing delay large
+- *La/R > 1*: average delay infinite!
+
+*Personal remark:*
+One may wonder why the queueing delay is large when the intensity = 1.
+- looks like if 5 persons come and 5 persons are serviced each minute, then there should be no queue.
+
+But imagine there are already 10 people in the queue waiting for their doctor appointment.
+Then if the traffic intensity = 1, the queue will never disappear.
+
+### Real Internet delays and routes
+#### Traceroute program
+Provides **delay** measurement from **source** to **router** **along end-end Internet path** towards **destination**.
+
+For all i:
+- sends three packets that will reach router i on path towards destination (with time-to-live field value of i)
+- router i will return packets to sender
+- sender measures time interval between transmission and reply
+
+![](imgs/1/4/3.png)
+
+### Packet loss
+- queue (aka buffer) preceding link has finite capacity
+- packet arriving to full queue dropped (aka lost)
+- lost packet may be retransmitted by previous node, by source end system, or not at all
+
+![](imgs/1/4/4.png)
+
+### Throughput
+- **throughput**: rate (bits/time unit) at which bits are being sent from sender to receiver
+  - **instantaneous**: rate at given point in time
+  - **average**: rate over longer period of time
+
+![](imgs/1/4/5.png)
+
+#### Water pipes analogy
+![](imgs/1/4/6.png)
+
+#### bottleneck link
+link on end-end path that constrains end-end throughput
+
+#### Throughput: network scenario
+![](imgs/1/4/7.png)
+
+- per-connection end-end throughput: *min(R_c, R_s, R/10)*
+- in practice: *R_c* or *R_s* is smaller than *R/N*
+  - bottleneck link is at network edge
+
+### Overview of network performance
+- Two aspects of network performance:
+- delay
+  - 4 components of delay
+  - traceroute
+- throughput
