@@ -465,3 +465,50 @@ Approach to designing/discussing complex systems:
   - taking information from higher layer
   - wrapping a header around it to implement the service
   - passing it down to a lower layer
+
+## 1.6. Networks Under Attack
+
+### Network security
+- Internet not originally designed with (much) security in mind
+  - original vision: a group of mutually trusting users attached to a transparent network
+  - Internet protocol designers playing "catch-up"
+  - security considerations in all layers
+- **We now need to think about:**
+  - how bad guys can attack computer networks
+  - how we can defend networks against attacks
+  - how to design architectures that are immune to attacks
+
+### Bad guys
+#### Packet "sniffing" (packet interception)
+- broadcast media (shared Ethernet, wireless)
+- promiscuous network interface reads/records all packets passing by
+
+![](imgs/1/6/1.png)
+
+#### Packet "spoofing" (fake identity)
+**IP spoofing**: injection of packet with false source address.
+
+![](imgs/1/6/2.png)
+
+#### Denial of Service (DoS)
+Attackers make resources (server, bandwidth) unavailable to legitimate traffic by overwhelming resource with bogus traffic.
+
+![](imgs/1/6/3.png)
+
+1. select target
+2. break into hosts around the network (see botnet)
+3. send packets to target from compromised hosts
+
+### Lines of defense
+- **authentication**: proving you are who you say you are
+  - cellular networks provides hardware identity via SIM cars; no such hardware assist in traditional Internet
+- **confidentiality**: via encryption
+- **integrity checks**: digital signatures prevent/detect tampering
+- **access restrictions**: password-protected VPNs
+- **firewalls**: specialized "middleboxes" in access and core networks:
+  - off-by-default: filter incoming packets to restrict senders, receivers, applications
+  - detecting/reacting to DOS attacks
+
+### Overview of Network security
+- What can bad actors do?
+- What defenses designed, deployed?
