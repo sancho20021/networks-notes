@@ -1039,7 +1039,7 @@ HTTP/2 over single TCP connection means:
 5. Bob's mail server places the message in Bob's mailbox
 6. Bob invokes his user agent to read message
 
-### SMTP RFC (5421)
+### SMTP RFC (5321)
 - uses TCP to reliably transfer email message from client (mail server initiating connection) to server, port 25
   - direct transfer: sending server (acting like client) to receiving server
 - three phases of transfer
