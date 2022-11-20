@@ -1088,7 +1088,7 @@ E-mail
 - infrastructure: user agents, servers, mailboxes
 - SMTP: simple mail transfer protocol
 
-### 2.4 The Domain Name System (DNS)
+## 2.4 The Domain Name System (DNS)
 
 **people:** many identifiers:
 - SSN, name, passport #
